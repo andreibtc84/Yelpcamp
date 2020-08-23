@@ -195,6 +195,12 @@ app.post("/login", passport.authenticate("local",
 	}), function(req, res){
 });
 
+// Logout Route
+
+app.get("/logout", function(req, res){
+	req.logout();
+	res.redirect("/campgrounds");
+});
 
 app.listen(3000, function() { 
   console.log('YelpCamp Server listening on port 3000'); 
