@@ -9,6 +9,10 @@ var Comment = require ("./models/comment");
 var User = require("./models/user");
 var seedDB = require("./seeds")
 
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+});
 
 seedDB();
 mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true});
