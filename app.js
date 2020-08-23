@@ -124,7 +124,7 @@ app.get("/campgrounds/:id", function(req, res){
 // COMMENTS ROUTES
 //===========================
 
-app.get("/campgrounds/:id/comments/new", function(req, res){
+app.get("/campgrounds/:id/comments/new", isLoggedIn, function(req, res){
     // find campground by id
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -135,7 +135,7 @@ app.get("/campgrounds/:id/comments/new", function(req, res){
     })
 });
 
-app.post("/campgrounds/:id/comments", function(req, res){
+app.post("/campgrounds/:id/comments", isLoggedIn, function(req, res){
    //lookup campground using ID
    Campground.findById(req.params.id, function(err, campground){
        if(err){
@@ -201,6 +201,14 @@ app.get("/logout", function(req, res){
 	req.logout();
 	res.redirect("/campgrounds");
 });
+
+// Middleware - check if user is logged in
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
 
 app.listen(3000, function() { 
   console.log('YelpCamp Server listening on port 3000'); 
