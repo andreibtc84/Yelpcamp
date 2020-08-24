@@ -15,7 +15,7 @@ router.get("/", function(req, res){
 			res.render("campgrounds/index", {campgrounds:allCampgrounds});
 		}
 	})
-	// res.render("campgrounds", {campgrounds:campgrounds});
+	
 });
 
 // Create route - add new campgrounds to DB
