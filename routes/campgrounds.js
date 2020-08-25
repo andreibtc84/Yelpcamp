@@ -90,10 +90,21 @@ router.put("/:id", function(req, res){
 			res.redirect("/campgrounds");
 		} else {
 			// Redirect to show page
-			res.redirect("/campgrounds/" + req.params.id);
+			res.redirect("/campgrounds/" + req.params.id); 
 		}
 	});
 	
+});
+
+// Destroy campground router
+router.delete("/:id", function(req, res){
+	Campground.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.redirect("/campgrounds");
+		} else {
+			res.redirect("/campgrounds");
+		}
+	});
 });
 
 // Middleware - check if user is logged in
