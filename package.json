@@ -9,7 +9,6 @@
   "author": "Allez",
   "license": "ISC",
   "dependencies": {
-    "bl": ">=2.2.1",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.3",
